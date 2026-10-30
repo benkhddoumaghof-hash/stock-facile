@@ -48,3 +48,16 @@ DELETE FROM categories WHERE id = 1;
 Il est important de fermer DB Browser ou la base de données avant qu'un autre programme, comme notre application Flutter, écrive dans le même fichier.
 
 Cela permet d'éviter les conflits d'accès et les problèmes de verrouillage du fichier SQLite. Cela garantit également que les modifications sont bien enregistrées et évite les risques de corruption des données.
+### Q2.1.Package	:Rôle
+sqflite	:Permet à Flutter de communiquer avec une base de données SQLite.
+path	:Permet de construire correctement les chemins des fichiers, notamment celui de la base de données.
+sqflite_common_ffi:	Permet d'utiliser SQLite sur Windows et Linux grâce à FFI.
+### Q2.3
+1. Pourquoi int? id ?
+- int signifie un nombre entier.
+- ? signifie que la valeur peut être null.
+- Quand on crée une nouvelle catégorie, elle n'a pas encore d'identifiant.
+- SQLite lui attribuera automatiquement un ID lors de l'insertion.
+2. Pourquoi if (id != null) 'id': id ?
+
+Cela signifie : ajouter l'ID dans la Map uniquement s'il existe déjà. Sinon, SQLite génère lui-même l'identifiant grâce à AUTOINCREMENT.
