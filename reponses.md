@@ -61,3 +61,31 @@ sqflite_common_ffi:	Permet d'utiliser SQLite sur Windows et Linux grâce à FFI.
 2. Pourquoi if (id != null) 'id': id ?
 
 Cela signifie : ajouter l'ID dans la Map uniquement s'il existe déjà. Sinon, SQLite génère lui-même l'identifiant grâce à AUTOINCREMENT.
+### Q2.4:question de reflexion:
+1. Pourquoi utiliser factory ?
+Parce qu'il permet de créer un objet Produit à partir d'une Map récupérée depuis SQLite.
+
+2. Pourquoi (map['prix'] as num).toDouble() ?
+Parce que le prix peut être un entier (int) ou un décimal (double). toDouble() garantit qu'il sera converti en double.
+Q3.2 — Questions de réflexion
+(1) Que se passe-t-il si on écrit deux fois DatabaseHelper() ? Combien d'objets sont créés ?
+
+Un seul objet est créé. Grâce au constructeur factory, les deux appels retournent la même instance de DatabaseHelper().
+
+(2) Que fait l'opérateur ??= ?
+
+Il affecte une valeur à une variable uniquement si elle est null. Sinon, il garde sa valeur actuelle.
+
+(3) Pourquoi placer PRAGMA foreign_keys = ON dans onConfigure et non dans onCreate ?
+
+Parce que onConfigure est exécuté à chaque ouverture de la base, alors que onCreate est exécuté uniquement lors de sa création. Ainsi, les clés étrangères sont activées à chaque ouverture.
+
+(4) Combien de fois onCreate est-il appelé dans toute la vie de l'application ?
+
+Une seule fois lors de la création initiale de la base de données. Il n'est pas rappelé lors des ouvertures suivantes, sauf si la base est supprimée et recréée.
+### Q3.5 — Est-ce que onCreate s'affiche encore ?
+Réponse à mettre dans reponses.md :
+
+Non, le message onCreate ne s'affiche pas lors du deuxième lancement, car cette fonction s'exécute uniquement lors de la première création de la base de données. Lors des lancements suivants, la base existe déjà.
+
+Si on supprime la base et qu'on la recrée, onCreate s'exécutera de nouveau.
