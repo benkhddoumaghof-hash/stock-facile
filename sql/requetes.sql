@@ -61,3 +61,26 @@ Papeterie	1
 SELECT SUM(prix * quantite) AS valeur_totale_stock
 FROM produits;
 777.5
+
+Q4.6 :
+
+L'exécution s'est terminée sans erreur.
+Résultat : Requête exécutée avec succès. Elle a pris 9 ms 
+À la ligne 1 :
+-- Q4.6 : Insertion du produit Stylo bleu
+INSERT INTO produits (
+    nom,
+    prix,
+    quantite,
+    disponible,
+    date_ajout,
+    categorie_id
+)
+VALUES (
+    'Stylo bleu',
+    0.500,
+    100,
+    1,
+    '2026-10-30',
+    4
+);

@@ -89,3 +89,11 @@ Réponse à mettre dans reponses.md :
 Non, le message onCreate ne s'affiche pas lors du deuxième lancement, car cette fonction s'exécute uniquement lors de la première création de la base de données. Lors des lancements suivants, la base existe déjà.
 
 Si on supprime la base et qu'on la recrée, onCreate s'exécutera de nouveau.
+### Q4.9 :
+La valeur disponible est stockée sous forme d'un entier :
+1 signifie disponible et 0 signifie non disponible.
+
+La date_ajout est stockée sous forme de texte au format ISO 8601.
+Cela est conforme à la méthode toMap() de la classe Produit :
+- disponible ? 1 : 0
+- dateAjout.toIso8601String()
